@@ -11,8 +11,44 @@ import {
 } from "@chakra-ui/react";
 import QuoteCard from "@/components/QuoteCard";
 import { defaultQuoteData } from "@/data/_data";
+import { useEffect, useState } from "react";
+import QuoteLoadingCard from "@/components/QuoteLoadingCard";
+import { fetchQuote } from "@/actions/action";
+import { useInView } from "react-intersection-observer";
+
+interface QuoteCardProps {
+  tags: string[];
+  quote: string;
+  name: string;
+  date: string;
+}
+
+interface APIProps {
+  _id: string;
+  content: string;
+  author: string;
+  tags: string[];
+  authorSlug: string;
+  length: number;
+  dateAdded: string;
+  dateModified: string;
+}
 
 export default function Page() {
+  const [data, setData] = useState<APIProps[]>([]);
+  const [page, setPage] = useState(1);
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      fetchQuote(page).then((res) => {
+        setData([...data, ...res.results]);
+        setPage(page + 1);
+        console.log(data);
+      });
+    }
+  }, [inView, data, page]);
+
   return (
     <>
       <Container maxW={"3xl"}>
@@ -48,10 +84,27 @@ export default function Page() {
                 />
               );
             })}
+            {data.map((data: APIProps) => {
+              return (
+                <QuoteCard
+                  tags={data.tags}
+                  key={data._id}
+                  quote={data.content}
+                  name={data.author}
+                  date={data.dateAdded}
+                />
+              );
+            })}
+            {[...Array(3)].map((el) => {
+              return (
+                <div key={el} ref={ref}>
+                  <QuoteLoadingCard />
+                </div>
+              );
+            })}
           </SimpleGrid>
         </Container>
       </Box>
     </>
   );
-  Page;
 }

@@ -108,10 +108,18 @@ const QuoteAvatar = ({ name, date }: { name: string; date: string }) => {
 };
 
 export default function QuoteCard({ tags, quote, name, date }: QuoteCardProps) {
+  let tag: string;
+
+  if (tags.length == 0) {
+    tag = "General";
+  } else {
+    tag = tags[0];
+  }
+
   return (
     <Quote>
       <QuoteContent>
-        <QuoteHeading>{tags[0]}</QuoteHeading>
+        <QuoteHeading>{tag}</QuoteHeading>
         <QuoteText>{quote}</QuoteText>
       </QuoteContent>
       <QuoteAvatar name={name} date={date}></QuoteAvatar>
