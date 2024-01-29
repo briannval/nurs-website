@@ -10,12 +10,23 @@ import {
   Stack,
   Icon,
   useColorModeValue,
-  createIcon,
   Flex,
   SimpleGrid,
   Image,
   StackDivider,
+  chakra,
+  Stat,
+  StatLabel,
+  StatNumber,
+  VStack,
+  useBreakpointValue,
 } from "@chakra-ui/react";
+
+import { BsPerson } from "react-icons/bs";
+
+import { FiServer } from "react-icons/fi";
+
+import { GoLocation } from "react-icons/go";
 
 import {
   IoAnalyticsSharp,
@@ -48,9 +59,71 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   );
 };
 
+function StatsCard(props: StatsCardProps) {
+  const { title, stat, icon } = props;
+  return (
+    <Stat
+      px={{ base: 2, md: 4 }}
+      py={"5"}
+      shadow={"xl"}
+      border={"1px solid"}
+      borderColor={useColorModeValue("gray.800", "gray.500")}
+      rounded={"lg"}
+    >
+      <Flex justifyContent={"space-between"}>
+        <Box pl={{ base: 2, md: 4 }}>
+          <StatLabel fontWeight={"medium"} isTruncated>
+            {title}
+          </StatLabel>
+          <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
+            {stat}
+          </StatNumber>
+        </Box>
+        <Box
+          my={"auto"}
+          color={useColorModeValue("gray.800", "gray.200")}
+          alignContent={"center"}
+        >
+          {icon}
+        </Box>
+      </Flex>
+    </Stat>
+  );
+}
+
 export default function Home() {
   return (
     <>
+      <Flex
+        w={"full"}
+        h={"100vh"}
+        backgroundImage={
+          "url(https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)"
+        }
+        backgroundSize={"cover"}
+        backgroundPosition={"center center"}
+      >
+        <VStack
+          w={"full"}
+          justify={"center"}
+          px={useBreakpointValue({ base: 4, md: 8 })}
+          bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+        >
+          <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
+            <Text
+              color={"white"}
+              fontWeight={700}
+              lineHeight={1.2}
+              fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+            >
+              <Text as={"span"} color={"orange.400"}>
+                Excitement{" "}
+              </Text>
+              waits for you below...
+            </Text>
+          </Stack>
+        </VStack>
+      </Flex>
       <Container maxW={"3xl"}>
         <Stack
           as={Box}
@@ -105,10 +178,10 @@ export default function Home() {
           <Stack spacing={4}>
             <Text
               textTransform={"uppercase"}
-              color={"blue.400"}
+              color={"orange.400"}
               fontWeight={600}
               fontSize={"sm"}
-              bg={useColorModeValue("blue.50", "blue.900")}
+              bg={useColorModeValue("orange.50", "orange.900")}
               p={1}
               alignSelf={"flex-start"}
               rounded={"md"}
@@ -130,28 +203,23 @@ export default function Home() {
             >
               <Feature
                 icon={
-                  <Icon
-                    as={IoAnalyticsSharp}
-                    color={"yellow.500"}
-                    w={5}
-                    h={5}
-                  />
+                  <Icon as={IoSearchSharp} color={"yellow.500"} w={5} h={5} />
                 }
-                iconBg={useColorModeValue("yellow.100", "yellow.900")}
+                iconBg={useColorModeValue("orange.100", "orange.900")}
                 text={"Random Quote Generator"}
               />
               <Feature
                 icon={
-                  <Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />
+                  <Icon as={IoSearchSharp} color={"orange.500"} w={5} h={5} />
                 }
-                iconBg={useColorModeValue("green.100", "green.900")}
+                iconBg={useColorModeValue("orange.100", "orange.900")}
                 text={"Random Joke Generator"}
               />
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
+                  <Icon as={IoSearchSharp} color={"orange.500"} w={5} h={5} />
                 }
-                iconBg={useColorModeValue("purple.100", "purple.900")}
+                iconBg={useColorModeValue("orange.100", "orange.900")}
                 text={"Random Image Generator"}
               />
             </Stack>
@@ -167,6 +235,39 @@ export default function Home() {
             />
           </Flex>
         </SimpleGrid>
+        <Box
+          maxW="7xl"
+          mt={20}
+          mx={"auto"}
+          pt={5}
+          px={{ base: 2, sm: 12, md: 17 }}
+        >
+          <chakra.h1
+            textAlign={"center"}
+            fontSize={"4xl"}
+            py={10}
+            fontWeight={"bold"}
+          >
+            Our Features
+          </chakra.h1>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+            <StatsCard
+              title={"Games"}
+              stat={"5,000"}
+              icon={<BsPerson size={"3em"} />}
+            />
+            <StatsCard
+              title={"Activites"}
+              stat={"1,000"}
+              icon={<FiServer size={"3em"} />}
+            />
+            <StatsCard
+              title={"Others"}
+              stat={"7"}
+              icon={<GoLocation size={"3em"} />}
+            />
+          </SimpleGrid>
+        </Box>
       </Container>
     </>
   );
