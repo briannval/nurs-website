@@ -13,7 +13,9 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@vercel/postgres": "^0.7.2",
     "boring-avatars": "^1.10.1",
+    "drizzle-orm": "^0.29.3",
     "framer-motion": "^11.0.3",
     "next": "14.1.0",
     "react": "^18",
@@ -25,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "drizzle-kit": "^0.20.13",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "typescript": "^5"

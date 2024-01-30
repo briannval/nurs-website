@@ -1,6 +1,5 @@
 "use client";
 
-import Head from "next/head";
 import {
   Box,
   Heading,
@@ -28,17 +27,20 @@ import { FiServer } from "react-icons/fi";
 
 import { GoLocation } from "react-icons/go";
 
-import {
-  IoAnalyticsSharp,
-  IoLogoBitcoin,
-  IoSearchSharp,
-} from "react-icons/io5";
+import { IoSearchSharp } from "react-icons/io5";
 import { ReactElement } from "react";
+import { IconType } from "react-icons";
 
 interface FeatureProps {
   text: string;
   iconBg: string;
   icon?: ReactElement;
+}
+
+interface StatCardProps {
+  title: string;
+  stat: string;
+  icon: ReactElement;
 }
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
@@ -59,7 +61,7 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   );
 };
 
-function StatsCard(props: StatsCardProps) {
+function StatsCard(props: StatCardProps) {
   const { title, stat, icon } = props;
   return (
     <Stat
