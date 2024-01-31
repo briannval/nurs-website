@@ -19,7 +19,10 @@ import {
   StatNumber,
   VStack,
   useBreakpointValue,
+  Link,
 } from "@chakra-ui/react";
+
+import FeatureCard from "@/components/FeatureCard";
 
 import { BsPerson } from "react-icons/bs";
 
@@ -27,9 +30,12 @@ import { FiServer } from "react-icons/fi";
 
 import { GoLocation } from "react-icons/go";
 
-import { IoSearchSharp } from "react-icons/io5";
+import {
+  IoAccessibility,
+  IoChatbubbleSharp,
+  IoCloudSharp,
+} from "react-icons/io5";
 import { ReactElement } from "react";
-import { IconType } from "react-icons";
 
 interface FeatureProps {
   text: string;
@@ -141,7 +147,7 @@ export default function Home() {
             Are you
             <Text as={"span"} color={"orange.400"}>
               {" "}
-              bored?
+              stressed?
             </Text>
           </Heading>
           <Text
@@ -149,7 +155,7 @@ export default function Home() {
             fontSize={{ base: "xs", sm: "md", md: "xl" }}
             as="b"
           >
-            Don't worry, we've got you a place to slack!
+            Don't worry, we're here to help you out!
           </Text>
           <Stack
             direction={"column"}
@@ -192,8 +198,7 @@ export default function Home() {
             </Text>
             <Heading>Try out some activities!</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore
+              Here are various benefits of being here:
             </Text>
             <Stack
               spacing={4}
@@ -205,24 +210,29 @@ export default function Home() {
             >
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={"yellow.500"} w={5} h={5} />
+                  <Icon as={IoAccessibility} color={"orange.500"} w={5} h={5} />
                 }
                 iconBg={useColorModeValue("orange.100", "orange.900")}
-                text={"Random Quote Generator"}
+                text={"Stress Reduction and Relief"}
               />
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={"orange.500"} w={5} h={5} />
+                  <Icon
+                    as={IoChatbubbleSharp}
+                    color={"orange.500"}
+                    w={5}
+                    h={5}
+                  />
                 }
                 iconBg={useColorModeValue("orange.100", "orange.900")}
-                text={"Random Joke Generator"}
+                text={"Daily Affirmation"}
               />
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={"orange.500"} w={5} h={5} />
+                  <Icon as={IoCloudSharp} color={"orange.500"} w={5} h={5} />
                 }
                 iconBg={useColorModeValue("orange.100", "orange.900")}
-                text={"Random Image Generator"}
+                text={"Review and community support"}
               />
             </Stack>
           </Stack>
@@ -237,9 +247,23 @@ export default function Home() {
             />
           </Flex>
         </SimpleGrid>
+
+        <chakra.h1
+          textAlign={"center"}
+          fontSize={"4xl"}
+          mt={20}
+          fontWeight={"bold"}
+        >
+          Try them now!
+        </chakra.h1>
+        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 3 }}>
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+        </SimpleGrid>
         <Box
           maxW="7xl"
-          mt={20}
+          mt={10}
           mx={"auto"}
           pt={5}
           px={{ base: 2, sm: 12, md: 17 }}
@@ -255,12 +279,12 @@ export default function Home() {
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
             <StatsCard
               title={"Games"}
-              stat={"5,000"}
+              stat={"3"}
               icon={<BsPerson size={"3em"} />}
             />
             <StatsCard
               title={"Activites"}
-              stat={"1,000"}
+              stat={"3"}
               icon={<FiServer size={"3em"} />}
             />
             <StatsCard
@@ -270,6 +294,25 @@ export default function Home() {
             />
           </SimpleGrid>
         </Box>
+        <VStack>
+          <Text mt={16} fontWeight={"bold"} textAlign={"center"}>
+            Created by Brian Adhitya 2024
+          </Text>
+          <Link
+            textAlign={"center"}
+            fontWeight={"bold"}
+            href="mailto:brianvalentinoadhitya@gmail.com"
+          >
+            brianvalentinoadhitya@gmail.com
+          </Link>
+          <Link
+            textAlign={"center"}
+            fontWeight={"bold"}
+            href="https://brianadhitya.vercel.app/"
+          >
+            https://brianadhitya.vercel.app/
+          </Link>
+        </VStack>
       </Container>
     </>
   );
