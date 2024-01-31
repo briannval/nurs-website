@@ -36,6 +36,7 @@ import {
   IoCloudSharp,
 } from "react-icons/io5";
 import { ReactElement } from "react";
+import Navbar from "@/components/Navbar";
 
 interface FeatureProps {
   text: string;
@@ -102,6 +103,7 @@ function StatsCard(props: StatCardProps) {
 export default function Home() {
   return (
     <>
+      <Navbar />
       <Flex
         w={"full"}
         h={"100vh"}
