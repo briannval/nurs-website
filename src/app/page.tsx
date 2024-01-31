@@ -181,7 +181,15 @@ export default function Home() {
           </Stack>
         </Stack>
       </Container>
-      <Container maxW={"5xl"} py={12}>
+      <Container maxW={"5xl"}>
+        <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
+          Try them now!
+        </chakra.h1>
+        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 3 }} mb={20}>
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+        </SimpleGrid>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20}>
           <Stack spacing={4}>
             <Text
@@ -196,7 +204,8 @@ export default function Home() {
             >
               BETA
             </Text>
-            <Heading>Try out some activities!</Heading>
+
+            <Heading>Why us?</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
               Here are various benefits of being here:
             </Text>
@@ -248,19 +257,6 @@ export default function Home() {
           </Flex>
         </SimpleGrid>
 
-        <chakra.h1
-          textAlign={"center"}
-          fontSize={"4xl"}
-          mt={20}
-          fontWeight={"bold"}
-        >
-          Try them now!
-        </chakra.h1>
-        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 3 }}>
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-        </SimpleGrid>
         <Box
           maxW="7xl"
           mt={10}
@@ -295,13 +291,19 @@ export default function Home() {
           </SimpleGrid>
         </Box>
         <VStack>
-          <Text mt={16} fontWeight={"bold"} textAlign={"center"}>
+          <Text
+            mt={16}
+            fontWeight={"bold"}
+            textAlign={"center"}
+            fontSize={"xs"}
+          >
             Created by Brian Adhitya 2024
           </Text>
           <Link
             textAlign={"center"}
             fontWeight={"bold"}
             href="mailto:brianvalentinoadhitya@gmail.com"
+            fontSize={"xs"}
           >
             brianvalentinoadhitya@gmail.com
           </Link>
@@ -309,6 +311,7 @@ export default function Home() {
             textAlign={"center"}
             fontWeight={"bold"}
             href="https://brianadhitya.vercel.app/"
+            fontSize={"xs"}
           >
             https://brianadhitya.vercel.app/
           </Link>
