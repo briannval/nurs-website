@@ -24,19 +24,12 @@ import {
 
 import FeatureCard from "@/components/FeatureCard";
 
-import { BsPerson } from "react-icons/bs";
-
-import { FiServer } from "react-icons/fi";
-
-import { GoLocation } from "react-icons/go";
-
 import {
   IoAccessibility,
   IoChatbubbleSharp,
   IoCloudSharp,
 } from "react-icons/io5";
 import { ReactElement } from "react";
-import Navbar from "@/components/Navbar";
 
 interface FeatureProps {
   text: string;
@@ -103,7 +96,6 @@ function StatsCard(props: StatCardProps) {
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Flex
         w={"full"}
         h={"100vh"}
@@ -187,7 +179,7 @@ export default function Home() {
         <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
           Try them now!
         </chakra.h1>
-        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 3 }} mb={20}>
+        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 2 }} mb={20}>
           <FeatureCard />
           <FeatureCard />
           <FeatureCard />
@@ -207,7 +199,7 @@ export default function Home() {
               BETA
             </Text>
 
-            <Heading>Why us?</Heading>
+            <Heading>Why?</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
               Here are various benefits of being here:
             </Text>
@@ -272,25 +264,8 @@ export default function Home() {
             py={10}
             fontWeight={"bold"}
           >
-            Our Features
+            About the website 
           </chakra.h1>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-            <StatsCard
-              title={"Games"}
-              stat={"3"}
-              icon={<BsPerson size={"3em"} />}
-            />
-            <StatsCard
-              title={"Activites"}
-              stat={"3"}
-              icon={<FiServer size={"3em"} />}
-            />
-            <StatsCard
-              title={"Others"}
-              stat={"7"}
-              icon={<GoLocation size={"3em"} />}
-            />
-          </SimpleGrid>
         </Box>
         <VStack>
           <Text
