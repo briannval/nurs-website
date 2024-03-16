@@ -176,15 +176,7 @@ export default function Home() {
         </Stack>
       </Container>
       <Container maxW={"5xl"}>
-        <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
-          Try them now!
-        </chakra.h1>
-        <SimpleGrid my={10} spacing={8} columns={{ base: 1, md: 2 }} mb={20}>
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-        </SimpleGrid>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} mb={20}>
           <Stack spacing={4}>
             <Text
               textTransform={"uppercase"}
@@ -250,49 +242,15 @@ export default function Home() {
             />
           </Flex>
         </SimpleGrid>
-
-        <Box
-          maxW="7xl"
-          mt={10}
-          mx={"auto"}
-          pt={5}
-          px={{ base: 2, sm: 12, md: 17 }}
-        >
-          <chakra.h1
-            textAlign={"center"}
-            fontSize={"4xl"}
-            py={10}
-            fontWeight={"bold"}
-          >
-            About the website 
-          </chakra.h1>
-        </Box>
-        <VStack>
-          <Text
-            mt={16}
-            fontWeight={"bold"}
-            textAlign={"center"}
-            fontSize={"xs"}
-          >
-            Created by Brian Adhitya 2024
-          </Text>
-          <Link
-            textAlign={"center"}
-            fontWeight={"bold"}
-            href="mailto:brianvalentinoadhitya@gmail.com"
-            fontSize={"xs"}
-          >
-            brianvalentinoadhitya@gmail.com
-          </Link>
-          <Link
-            textAlign={"center"}
-            fontWeight={"bold"}
-            href="https://brianadhitya.vercel.app/"
-            fontSize={"xs"}
-          >
-            https://brianadhitya.vercel.app/
-          </Link>
-        </VStack>
+        <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
+          Try them now!
+        </chakra.h1>
+        <SimpleGrid my={10} spacing={2} columns={{ base: 1, md: 2 }} mb={20}>
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+        </SimpleGrid>
       </Container>
     </>
   );

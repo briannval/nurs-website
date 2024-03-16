@@ -17,7 +17,7 @@ export default function FeatureCard() {
   return (
     <Center py={6}>
       <Box
-        maxW={"330px"}
+        maxW={"400px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
         border={"1px solid"}
@@ -39,7 +39,7 @@ export default function FeatureCard() {
             color={"orange.500"}
             rounded={"full"}
           >
-            Hobby
+            New
           </Text>
           <Stack direction={"row"} align={"center"} justify={"center"}>
             <Text fontSize={"3xl"}>$</Text>
@@ -83,7 +83,7 @@ export default function FeatureCard() {
               bg: "orange.500",
             }}
           >
-            Start your trial
+            Try it now!
           </Button>
         </Box>
       </Box>

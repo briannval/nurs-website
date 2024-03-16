@@ -77,9 +77,11 @@ const QuoteText = (props: Props) => {
 
   return (
     <Text
+      onClick={() => console.log("Test")}
       textAlign={"center"}
       color={useColorModeValue("gray.600", "gray.400")}
-      fontSize={"sm"}
+      fontSize={"md"}
+      as={"i"}
     >
       {children}
     </Text>
