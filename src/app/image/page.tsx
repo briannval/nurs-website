@@ -11,6 +11,7 @@ import {
   Button,
   Image,
   Skeleton,
+  Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -55,25 +56,29 @@ export default function Page() {
         ) : (
           <Image src={dog} width="1000px" height="600px" />
         )}
-        <Button
-          isLoading={loadingDog}
-          colorScheme="teal"
-          onClick={() => getDog()}
-        >
-          Generate Random Dog
-        </Button>
+        <Flex alignItems={"center"} justifyContent={"center"}>
+          <Button
+            isLoading={loadingDog}
+            colorScheme="teal"
+            onClick={() => getDog()}
+          >
+            Generate Random Dog
+          </Button>
+        </Flex>
         {loadingCat ? (
           <Skeleton width="735px" height="600px" />
         ) : (
           <Image src={cat} width="1000px" height="600px" />
         )}
-        <Button
-          isLoading={loadingCat}
-          colorScheme="teal"
-          onClick={() => getCat()}
-        >
-          Generate Random Cat
-        </Button>
+        <Flex alignItems={"center"} justifyContent={"center"}>
+          <Button
+            isLoading={loadingCat}
+            colorScheme="teal"
+            onClick={() => getCat()}
+          >
+            Generate Random Cat
+          </Button>
+        </Flex>
         <Text as={"b"}>More to come soon!</Text>
       </Stack>
     </Container>
