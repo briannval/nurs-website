@@ -65,6 +65,13 @@ export default function Page() {
     }, 1000);
   };
 
+  const handleColor = () => {
+    if (state.in) {
+      return "blue.400";
+    }
+    return "orange.400";
+  };
+
   useEffect(() => {
     if (state.begin) {
       const inRange =
@@ -108,9 +115,13 @@ export default function Page() {
             w={"fit-content"}
             size={"400px"}
             value={state.breathe}
-            color="blue.400"
+            color={handleColor()}
           >
-            <CircularProgressLabel fontSize={"medium"} as="b">
+            <CircularProgressLabel
+              fontSize={"medium"}
+              as="b"
+              color={handleColor()}
+            >
               {state.in ? "Breathe in..." : "Breathe out..."}
             </CircularProgressLabel>
           </CircularProgress>
