@@ -6,7 +6,7 @@ import { Providers } from "@/providers/providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Slack Web",
+  title: "Antistress Website",
   description: "Created by Brian Adhitya",
 };
 
