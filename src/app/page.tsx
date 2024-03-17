@@ -5,7 +5,6 @@ import {
   Heading,
   Container,
   Text,
-  Button,
   Stack,
   Icon,
   useColorModeValue,
@@ -13,23 +12,24 @@ import {
   SimpleGrid,
   Image,
   StackDivider,
-  chakra,
   Stat,
   StatLabel,
   StatNumber,
-  VStack,
-  useBreakpointValue,
-  Link,
 } from "@chakra-ui/react";
 
 import FeatureCard from "@/components/FeatureCard";
 
 import {
   IoAccessibility,
+  IoAccessibilityOutline,
   IoChatbubbleSharp,
   IoCloudSharp,
 } from "react-icons/io5";
 import { ReactElement } from "react";
+import { PiDog } from "react-icons/pi";
+import { LuQuote } from "react-icons/lu";
+import { QuestionIcon } from "@chakra-ui/icons";
+import { BsQuestion, BsQuestionCircle } from "react-icons/bs";
 
 interface FeatureProps {
   text: string;
@@ -96,42 +96,12 @@ function StatsCard(props: StatCardProps) {
 export default function Home() {
   return (
     <>
-      <Flex
-        w={"full"}
-        h={"100vh"}
-        backgroundImage={
-          "url(https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)"
-        }
-        backgroundSize={"cover"}
-        backgroundPosition={"center center"}
-      >
-        <VStack
-          w={"full"}
-          justify={"center"}
-          px={useBreakpointValue({ base: 4, md: 8 })}
-          bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
-        >
-          <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
-            <Text
-              color={"white"}
-              fontWeight={700}
-              lineHeight={1.2}
-              fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
-            >
-              <Text as={"span"} color={"orange.400"}>
-                Excitement{" "}
-              </Text>
-              waits for you below...
-            </Text>
-          </Stack>
-        </VStack>
-      </Flex>
       <Container maxW={"3xl"}>
         <Stack
           as={Box}
           textAlign={"center"}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+          py={{ base: 14, md: 20 }}
         >
           <Heading
             fontWeight={600}
@@ -157,22 +127,7 @@ export default function Home() {
             align={"center"}
             alignSelf={"center"}
             position={"relative"}
-          >
-            <Button
-              colorScheme={"orange"}
-              bg={"orange.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "white.500",
-              }}
-            >
-              Get Started
-            </Button>
-            <Button variant={"link"} mt={4} colorScheme={"black"} size={"sm"}>
-              Leave a review
-            </Button>
-          </Stack>
+          ></Stack>
         </Stack>
       </Container>
       <Container maxW={"5xl"}>
@@ -236,20 +191,26 @@ export default function Home() {
               rounded={"md"}
               alt={"feature image"}
               src={
-                "https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                "https://media.istockphoto.com/id/1269843303/vector/happy-family.jpg?s=612x612&w=0&k=20&c=Vf9U2tUH5gN_KI3utmR7hbzNyg9ugkVQFCRNJjGRV0U="
               }
               objectFit={"cover"}
             />
           </Flex>
         </SimpleGrid>
-        <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
-          Try them now!
-        </chakra.h1>
         <SimpleGrid my={10} spacing={2} columns={{ base: 1, md: 2 }} mb={20}>
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
+          <FeatureCard icon={PiDog} name="Cute Animals" link="/image" />
+          <FeatureCard
+            icon={IoAccessibilityOutline}
+            name="Breathing Exercise"
+            link="/breathe"
+          />
+          <FeatureCard icon={LuQuote} name="Quote Generator" link="/quote" />
+          <FeatureCard
+            icon={BsQuestionCircle}
+            name="More to come..."
+            link="/"
+            ongoing={true}
+          />
         </SimpleGrid>
       </Container>
     </>

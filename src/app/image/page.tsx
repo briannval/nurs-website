@@ -14,8 +14,11 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { FaCat, FaDog } from "react-icons/fa";
+import { MdWest } from "react-icons/md";
 
 export default function Page() {
+  const [homeButton, setHomeButton] = useState<boolean>(false);
   const [dog, setDog] = useState(DEFAULT_DOG_URL);
   const [loadingDog, setLoadingDog] = useState<boolean>(false);
   const [cat, setCat] = useState(DEFAULT_CAT_URL);
@@ -56,13 +59,15 @@ export default function Page() {
         ) : (
           <Image src={dog} width="1000px" height="600px" />
         )}
-        <Flex alignItems={"center"} justifyContent={"center"}>
+        <Flex alignItems={"center"} justifyContent={"center"} maxWidth={"100%"}>
           <Button
+            leftIcon={<FaDog />}
             isLoading={loadingDog}
             colorScheme="teal"
             onClick={() => getDog()}
+            width={"30%"}
           >
-            Generate Random Dog
+            Generate random dog
           </Button>
         </Flex>
         {loadingCat ? (
@@ -70,16 +75,37 @@ export default function Page() {
         ) : (
           <Image src={cat} width="1000px" height="600px" />
         )}
-        <Flex alignItems={"center"} justifyContent={"center"}>
+        <Flex alignItems={"center"} justifyContent={"center"} maxWidth={"100%"}>
           <Button
+            leftIcon={<FaCat />}
             isLoading={loadingCat}
             colorScheme="teal"
             onClick={() => getCat()}
+            width={"30%"}
           >
-            Generate Random Cat
+            Generate random cat
           </Button>
         </Flex>
-        <Text as={"b"}>More to come soon!</Text>
+        <Flex
+          alignItems={"center"}
+          justifyContent={"center"}
+          maxWidth={"100%"}
+          mt={"-4"}
+        >
+          <Button
+            isLoading={homeButton}
+            leftIcon={<MdWest />}
+            colorScheme="black"
+            variant="outline"
+            width={"30%"}
+            onClick={() => {
+              setHomeButton(true);
+              window.location.href = "/";
+            }}
+          >
+            Back to home
+          </Button>
+        </Flex>
       </Stack>
     </Container>
   );

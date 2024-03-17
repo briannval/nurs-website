@@ -11,8 +11,8 @@ import {
   Flex,
   CircularProgressLabel,
 } from "@chakra-ui/react";
-import { useEffect, useReducer } from "react";
-import { MdCheck, MdClose } from "react-icons/md";
+import { useEffect, useReducer, useState } from "react";
+import { MdCheck, MdClose, MdWest } from "react-icons/md";
 
 interface reducerState {
   breathe: number;
@@ -51,8 +51,19 @@ function reducer(state: reducerState, action: reducerAction) {
 }
 
 export default function Page() {
+  const [homeButton, setHomeButton] = useState<boolean>(false);
   const initialState = { breathe: 0, begin: false, incrementer: 1, in: true };
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleReverse = () => {
+    setTimeout(() => {
+      if (state.breathe === 100) {
+        dispatch({ type: "REVERSE", payload: -1 });
+      } else if (state.breathe === 0) {
+        dispatch({ type: "REVERSE", payload: 1 });
+      }
+    }, 1000);
+  };
 
   useEffect(() => {
     if (state.begin) {
@@ -61,16 +72,6 @@ export default function Page() {
         (state.breathe >= 50 && state.breathe <= 75);
 
       const id = setInterval(() => dispatch({ type: "UPDATE" }), 90);
-
-      const handleReverse = () => {
-        setTimeout(() => {
-          if (state.breathe === 100) {
-            dispatch({ type: "REVERSE", payload: -1 });
-          } else if (state.breathe === 0) {
-            dispatch({ type: "REVERSE", payload: 1 });
-          }
-        }, 1000);
-      };
 
       if (state.incrementer === 1) {
         dispatch({ type: "SET_IN", payload: inRange });
@@ -129,7 +130,7 @@ export default function Page() {
             </Button>
           ) : (
             <Button
-              rightIcon={<MdCheck />}
+              leftIcon={<MdCheck />}
               onClick={() => {
                 dispatch({ type: "BEGIN" });
               }}
@@ -140,6 +141,21 @@ export default function Page() {
               Start
             </Button>
           )}
+        </Flex>
+        <Flex alignItems={"center"} justifyContent={"center"} mt={-10}>
+          <Button
+            isLoading={homeButton}
+            leftIcon={<MdWest />}
+            colorScheme="black"
+            variant="outline"
+            width={"30%"}
+            onClick={() => {
+              setHomeButton(true);
+              window.location.href = "/";
+            }}
+          >
+            Back to home
+          </Button>
         </Flex>
       </Stack>
     </Container>

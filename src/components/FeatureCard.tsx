@@ -5,15 +5,30 @@ import {
   Center,
   Text,
   Stack,
-  List,
-  ListItem,
-  ListIcon,
   Button,
   useColorModeValue,
+  Icon,
+  Flex,
 } from "@chakra-ui/react";
-import { CheckIcon } from "@chakra-ui/icons";
+import React, { useState } from "react";
+import { IconType } from "react-icons";
+import { BeatLoader } from "react-spinners";
 
-export default function FeatureCard() {
+interface ComponentProps {
+  icon: IconType;
+  name: string;
+  ongoing?: boolean;
+  link: string;
+}
+
+export default function FeatureCard({
+  icon,
+  name,
+  ongoing,
+  link,
+}: ComponentProps) {
+  const [loading, setLoading] = useState<boolean>(false);
+
   return (
     <Center py={6}>
       <Box
@@ -41,50 +56,49 @@ export default function FeatureCard() {
           >
             New
           </Text>
-          <Stack direction={"row"} align={"center"} justify={"center"}>
-            <Text fontSize={"3xl"}>$</Text>
-            <Text fontSize={"6xl"} fontWeight={800}>
-              79
-            </Text>
-            <Text color={"gray.500"}>/month</Text>
-          </Stack>
+          <Text fontSize={"3xl"} fontWeight={600}>
+            {name}
+          </Text>
         </Stack>
 
         <Box bg={useColorModeValue("gray.50", "gray.900")} px={6} py={10}>
-          <List spacing={3}>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="orange.400" />
-              5.000 page views
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="orange.400" />
-              50 automation executions
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="orange.400" />
-              50 identified users
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="orange.400" />
-              All features
-            </ListItem>
-          </List>
-
-          <Button
-            mt={10}
-            w={"full"}
-            bg={"orange.400"}
-            color={"white"}
-            rounded={"xl"}
-            _hover={{
-              bg: "orange.500",
-            }}
-            _focus={{
-              bg: "orange.500",
-            }}
-          >
-            Try it now!
-          </Button>
+          <Flex justifyContent={"center"} alignItems={"center"}>
+            <Icon as={icon} w={20} h={20}></Icon>
+          </Flex>
+          {ongoing ? (
+            <Button
+              isLoading
+              mt={10}
+              w={"full"}
+              borderColor={"black"}
+              color={"black"}
+              variant={"outline"}
+              rounded={"xl"}
+              spinner={<BeatLoader size={8} color="black" />}
+            >
+              Click me
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                setLoading(true);
+                window.location.href = link;
+              }}
+              isLoading={loading}
+              mt={10}
+              w={"full"}
+              borderColor={"black"}
+              color={"black"}
+              variant={"outline"}
+              rounded={"xl"}
+              _hover={{
+                bg: "orange.500",
+                color: "white",
+              }}
+            >
+              Try it now !
+            </Button>
+          )}
         </Box>
       </Box>
     </Center>

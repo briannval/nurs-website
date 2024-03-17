@@ -8,6 +8,8 @@ import {
   Text,
   Stack,
   useColorModeValue,
+  Flex,
+  Button,
 } from "@chakra-ui/react";
 import QuoteCard from "@/components/QuoteCard";
 import { defaultQuoteData } from "@/data/_data";
@@ -15,13 +17,7 @@ import { useEffect, useState } from "react";
 import QuoteLoadingCard from "@/components/QuoteLoadingCard";
 import { fetchQuote } from "@/actions/action";
 import { useInView } from "react-intersection-observer";
-
-interface QuoteCardProps {
-  tags: string[];
-  quote: string;
-  name: string;
-  date: string;
-}
+import { MdWest } from "react-icons/md";
 
 interface APIProps {
   _id: string;
@@ -35,6 +31,7 @@ interface APIProps {
 }
 
 export default function Page() {
+  const [homeButton, setHomeButton] = useState<boolean>(false);
   const [data, setData] = useState<APIProps[]>([]);
   const [page, setPage] = useState(1);
   const { ref, inView } = useInView();
@@ -68,6 +65,26 @@ export default function Page() {
               Inspired.
             </Text>
           </Heading>
+          <Flex
+            alignItems={"center"}
+            justifyContent={"center"}
+            maxWidth={"100%"}
+            mt={"-4"}
+          >
+            <Button
+              isLoading={homeButton}
+              leftIcon={<MdWest />}
+              colorScheme="black"
+              variant="outline"
+              width={"30%"}
+              onClick={() => {
+                setHomeButton(true);
+                window.location.href = "/";
+              }}
+            >
+              Back to home
+            </Button>
+          </Flex>
         </Stack>
       </Container>
       <Box bg={useColorModeValue("gray.100", "gray.200")}>
