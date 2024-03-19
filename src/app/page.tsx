@@ -212,6 +212,12 @@ export default function Home() {
             ongoing={true}
           />
         </SimpleGrid>
+        <Flex alignItems={"center"} justifyContent={"center"} mb={2}>
+          <Text as={"b"}>Website created by Brian Adhitya</Text>
+        </Flex>
+        <Flex alignItems={"center"} justifyContent={"center"} mb={10}>
+          <Text as={"i"}>NURS 180 - University of British Columbia</Text>
+        </Flex>
       </Container>
     </>
   );
